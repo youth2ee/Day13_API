@@ -29,8 +29,6 @@ public class Client2 {
 			//"localhost" : 자기컴퓨터
 			//직접적인 아이피번호를 쓰는게 낫다.
 
-			boolean check = true;
-
 			System.out.println("무엇을 골라드릴까요");
 			System.out.println("1. 점심");
 			System.out.println("2. 저녁");

@@ -83,9 +83,7 @@ public class Client { // 클라이언트는 하나의 서버에게 보낸다.
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
-
 	}
 
 }

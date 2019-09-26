@@ -33,19 +33,18 @@ public class MenuMaker {
 		return menu;
 	}
 
+	
 	public void init() {
 		this.lunchs =	this.makeMenu("lunch.txt", "-");
 		this.dinners = this.makeMenu("dinner.txt", ",");
 	}
 
+	
 	private ArrayList<String> makeMenu(String fileName, String delim) {
-
-
 		File file = new File("c:\\test", fileName);
 		ArrayList<String> ar = new ArrayList<String>();
 
 		boolean check = true;
-
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
@@ -60,9 +59,7 @@ public class MenuMaker {
 				while(st.hasMoreTokens()) {
 					ar.add(st.nextToken());		
 				}
-
 			}
-
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
