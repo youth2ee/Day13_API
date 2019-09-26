@@ -48,11 +48,10 @@ public class Server { //서버는 다수에게 보낸다.
 				br = new BufferedReader(ir); //string으로 처리
 
 				String str = br.readLine(); //읽어들이기 
-				if(str==null) {
+				if(str.toUpperCase().equals("Q")) {
 					System.out.println("종료합니다.");
 					break;
 				}
-
 				System.out.println(str);
 
 
@@ -65,13 +64,13 @@ public class Server { //서버는 다수에게 보낸다.
 				System.out.println("클라이언트에게 전송할 메시지를 입력하세요");
 				str = scc.next();
 
-				if(str.toUpperCase().equals("Q")) {
-					System.out.println("종료합니다.");
-					break;
-				}
 
 				bw.write(str+"\r\n");
 				bw.flush(); 
+				if(str.toUpperCase().equals("Q")) {
+					System.out.println("종료합니다.");
+					break;
+				} //q를 일단 보내고 받은 클라이언트가 종료한다.
 				System.out.println("클라이언트에게 전송완료");
 
 			}
@@ -89,7 +88,6 @@ public class Server { //서버는 다수에게 보낸다.
 				is.close();
 				sc.close();
 				ss.close();
-
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

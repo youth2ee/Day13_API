@@ -29,7 +29,7 @@ public class Client { // 클라이언트는 하나의 서버에게 보낸다.
 		Scanner scc = new Scanner(System.in);
 
 		try {
-			sc = new Socket("211.238.142.30", 8282);
+			sc = new Socket("211.238.142.44", 8282);
 			//String host : ip주소나 도메인주소를 적는다. 
 			//int port : 포트번호를 적는다.
 
@@ -44,26 +44,23 @@ public class Client { // 클라이언트는 하나의 서버에게 보낸다.
 				System.out.println("서버로 전송할 메시지를 입력하세요");
 				String str = scc.next();
 
+				bw.write(str+"\r\n");
+				bw.flush(); //버퍼를 강제로 내보내기
 				if(str.toUpperCase().equals("Q")) {
 					System.out.println("종료합니다.");
 					break;
-				}
-
-				bw.write(str+"\r\n");
-				bw.flush(); //버퍼를 강제로 내보내기
+				} //q를 일단 보내고 받은 서버에서 종료한다.
 				System.out.println("서버로 전송완료");
 
 
 				//받기
 				//연결되어 있으므로 다시 연결할 필요가 없다.
-				System.out.println("클라이언트 접속 받기를 기다리는 중");
-
 				is = sc.getInputStream(); 
 				ir = new InputStreamReader(is);
 				br = new BufferedReader(ir); 
 
 				str = br.readLine();
-				if(str==null) {
+				if(str.toUpperCase().equals("Q")) {
 					System.out.println("종료합니다.");
 					break;
 				}
