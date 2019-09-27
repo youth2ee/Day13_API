@@ -7,28 +7,32 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class MemberService {
+	
 
 	public ArrayList<Member> init() throws Exception {
+		//static메서드 안에서는 멤버메서드는 객체 생성해서 this 써야한다.
+		
 		//파일불러서 자르기
-
 		File file = new File("c:\\test", "member.txt");
-		FileReader fr = new FileReader(file);
-		BufferedReader br = new BufferedReader(fr);
+		FileReader fr = new FileReader(file); //char로 읽는다.
+		BufferedReader br = new BufferedReader(fr); //보조스트림 . string으로 읽는다.
 		ArrayList<Member> ar = new ArrayList<>();
 
 		boolean check = true;
 		while(check) {
-			String str = br.readLine();
+			String str = br.readLine(); //한줄씩 읽는다.
 			if(str==null) {
 				break;
 			}
 			StringTokenizer st = new StringTokenizer (str,",");
 
 			while(st.hasMoreTokens()) {
-				Member member = new Member();
+				Member member = new Member(); //멤버객체를 계속 새로 만들어줘야 새로 넣는다.
+				
 				member.setId(st.nextToken().trim());
 				member.setPw(st.nextToken().trim());
 
@@ -36,8 +40,8 @@ public class MemberService {
 				System.out.println(member.getPw());
 
 				ar.add(member);
-			}//while
-		}//while
+			}//while1
+		}//while2
 
 		return ar;
 	}//init
